@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         ib_save.setOnClickListener {
             if(isReadStorageAllowed()){
-                BitmapAsyncTask(getBitmapFomView(fl_drawing_view_container)).execute()
+                BitmapAsyncTask(getBitmapFromView(fl_drawing_view_container)).execute()
             }else{
                 requestStoragePermission()
             }
@@ -155,7 +155,7 @@ class MainActivity : AppCompatActivity() {
         return result == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun getBitmapFomView(view: View): Bitmap{
+    private fun getBitmapFromView(view: View): Bitmap{
         val returnedBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(returnedBitmap)
         val bgDrawable = view.background
@@ -172,7 +172,6 @@ class MainActivity : AppCompatActivity() {
 
     private inner class BitmapAsyncTask(val mBitmap: Bitmap): AsyncTask<Any, Void, String>(){
 
-
         override fun doInBackground(vararg p0: Any?): String {
             var result = ""
 
@@ -181,9 +180,8 @@ class MainActivity : AppCompatActivity() {
                     val bytes = ByteArrayOutputStream()
                     mBitmap.compress(Bitmap.CompressFormat.PNG, 90, bytes)
 
-                    val f = File(externalCacheDir!!.absoluteFile.toString()
-                            + File.separator + "DrawingApp_"
-                            + System.currentTimeMillis() / 1000 + ".png")
+                    val f = File(externalCacheDir!!.absoluteFile.toString() + File.separator
+                            + "DrawingApp_" + System.currentTimeMillis() / 1000 + ".png")
 
                     val fos = FileOutputStream(f)
                     fos.write(bytes.toByteArray())
@@ -202,7 +200,7 @@ class MainActivity : AppCompatActivity() {
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
             if(result!!.isNotEmpty()){
-                Toast.makeText(this@MainActivity, "File saved successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "File saved successfully: $result", Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(this@MainActivity, "Something went wrong while saving the file", Toast.LENGTH_SHORT).show()
             }
