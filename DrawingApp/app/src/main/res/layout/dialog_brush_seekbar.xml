@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content">
+
+
+    <SeekBar
+        android:id="@+id/sb_brush_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:thumb="@drawable/seek_thumb"
+        android:progressDrawable="@drawable/seek_bar"
+        android:padding="10dp"
+        android:max="25"
+        android:min="1"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Size:"
+        android:textSize="19sp"
+        android:textColor="@android:color/black"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="20dp"/>
+
+</LinearLayout>

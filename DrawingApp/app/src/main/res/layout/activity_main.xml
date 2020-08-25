@@ -42,6 +42,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fl_drawing_view_container"
         >
+
         <ImageButton
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -132,6 +133,7 @@
             android:background="@color/brown"
             android:src="@drawable/palette_normal"
             android:tag="@color/brown"/>
+
     </LinearLayout>
 
     <LinearLayout
